@@ -81,7 +81,22 @@ app.get("/api/cryptos", async (req, res) => {
     return res.status(500).send(error);
   }
 
-  res.send(cryptos);
+  // Format each crypto to include the ath price diff + % diff.
+  const formattedCryptos = cryptos?.map((crypto) => {
+    const athPriceDiffUSD = crypto?.athPriceUSD - crypto?.quote?.USD?.price;
+    const athPriceDiffPercent =
+      (crypto?.athPriceUSD / crypto?.quote?.USD?.price) * 100;
+
+    const formattedCrypto = {
+      ...crypto,
+      athPriceDiffUSD,
+      athPriceDiffPercent,
+    };
+
+    return formattedCrypto;
+  });
+
+  res.send(formattedCryptos);
 });
 
 // Start the server.
