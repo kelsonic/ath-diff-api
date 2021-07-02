@@ -1,702 +1,402 @@
 [
   {
-    "currentPriceUSD": "$0.01",
     "athPriceUSD": "$4.49",
-    "name": "Revain",
-    "potentialReturn": "$5,660,615.23",
-    "potentialReturnPercent": "56506.15%"
+    "name": "Revain"
   },
   {
-    "currentPriceUSD": "$116.95",
     "athPriceUSD": "$5,941.80",
-    "name": "Zcash",
-    "potentialReturn": "$508,063.27",
-    "potentialReturnPercent": "4980.63%"
+    "name": "Zcash"
   },
   {
-    "currentPriceUSD": "$1.65",
     "athPriceUSD": "$60.50",
-    "name": "Curve DAO Token",
-    "potentialReturn": "$366,666.67",
-    "potentialReturnPercent": "3566.67%"
+    "name": "Curve DAO Token"
   },
   {
-    "currentPriceUSD": "$44.49",
     "athPriceUSD": "$737.20",
-    "name": "Internet Computer",
-    "potentialReturn": "$165,700.16",
-    "potentialReturnPercent": "1557.00%"
+    "name": "Internet Computer"
   },
   {
-    "currentPriceUSD": "$0.13",
     "athPriceUSD": "$2.09",
-    "name": "NEM",
-    "potentialReturn": "$165,610.14",
-    "potentialReturnPercent": "1556.10%"
+    "name": "NEM"
   },
   {
-    "currentPriceUSD": "$0.69",
     "athPriceUSD": "$10.00",
-    "name": "Ontology",
-    "potentialReturn": "$144,759.70",
-    "potentialReturnPercent": "1347.60%"
+    "name": "Ontology"
   },
   {
-    "currentPriceUSD": "$6.97",
     "athPriceUSD": "$99.87",
-    "name": "Qtum",
-    "potentialReturn": "$143,285.51",
-    "potentialReturnPercent": "1332.86%"
+    "name": "Qtum"
   },
   {
-    "currentPriceUSD": "$137.05",
     "athPriceUSD": "$1,642.22",
-    "name": "Dash",
-    "potentialReturn": "$119,826.34",
-    "potentialReturnPercent": "1098.26%"
+    "name": "Dash"
   },
   {
-    "currentPriceUSD": "$45.99",
     "athPriceUSD": "$539.72",
-    "name": "Bitcoin Gold",
-    "potentialReturn": "$117,355.95",
-    "potentialReturnPercent": "1073.56%"
+    "name": "Bitcoin Gold"
   },
   {
-    "currentPriceUSD": "$493.31",
     "athPriceUSD": "$4,355.62",
-    "name": "Bitcoin Cash",
-    "potentialReturn": "$88,293.77",
-    "potentialReturnPercent": "782.94%"
+    "name": "Bitcoin Cash"
   },
   {
-    "currentPriceUSD": "$0.01",
     "athPriceUSD": "$0.11",
-    "name": "Siacoin",
-    "potentialReturn": "$87,676.61",
-    "potentialReturnPercent": "776.77%"
+    "name": "Siacoin"
   },
   {
-    "currentPriceUSD": "$4.76",
     "athPriceUSD": "$37.62",
-    "name": "Nano",
-    "potentialReturn": "$79,033.61",
-    "potentialReturnPercent": "690.34%"
+    "name": "Nano"
   },
   {
-    "currentPriceUSD": "$0.79",
     "athPriceUSD": "$5.69",
-    "name": "IOTA",
-    "potentialReturn": "$72,043.56",
-    "potentialReturnPercent": "620.44%"
+    "name": "IOTA"
   },
   {
-    "currentPriceUSD": "$4.12",
     "athPriceUSD": "$28.35",
-    "name": "OMG Network",
-    "potentialReturn": "$68,810.68",
-    "potentialReturnPercent": "588.11%"
+    "name": "OMG Network"
   },
   {
-    "currentPriceUSD": "$1.00",
     "athPriceUSD": "$6.29",
-    "name": "Binance USD",
-    "potentialReturn": "$62,900.00",
-    "potentialReturnPercent": "529.00%"
+    "name": "Binance USD"
   },
   {
-    "currentPriceUSD": "$1.61",
     "athPriceUSD": "$10.06",
-    "name": "Mdex",
-    "potentialReturn": "$62,484.47",
-    "potentialReturnPercent": "524.84%"
+    "name": "Mdex"
   },
   {
-    "currentPriceUSD": "$3.88",
     "athPriceUSD": "$22.89",
-    "name": "EOS",
-    "potentialReturn": "$58,994.85",
-    "potentialReturnPercent": "489.95%"
+    "name": "EOS"
   },
   {
-    "currentPriceUSD": "$0.65",
     "athPriceUSD": "$3.84",
-    "name": "XRP",
-    "potentialReturn": "$58,823.53",
-    "potentialReturnPercent": "488.24%"
+    "name": "XRP"
   },
   {
-    "currentPriceUSD": "$33.56",
     "athPriceUSD": "$196.85",
-    "name": "Neo",
-    "potentialReturn": "$58,656.14",
-    "potentialReturnPercent": "486.56%"
+    "name": "Neo"
   },
   {
-    "currentPriceUSD": "$0.00",
     "athPriceUSD": "$0.01",
-    "name": "BitTorrent",
-    "potentialReturn": "$54,615.09",
-    "potentialReturnPercent": "446.15%"
+    "name": "BitTorrent"
   },
   {
-    "currentPriceUSD": "$11.02",
     "athPriceUSD": "$59.94",
-    "name": "Avalanche",
-    "potentialReturn": "$54,392.01",
-    "potentialReturnPercent": "443.92%"
+    "name": "Avalanche"
   },
   {
-    "currentPriceUSD": "$0.54",
     "athPriceUSD": "$2.88",
-    "name": "The Graph",
-    "potentialReturn": "$53,591.37",
-    "potentialReturnPercent": "435.91%"
+    "name": "The Graph"
   },
   {
-    "currentPriceUSD": "$0.01",
     "athPriceUSD": "$0.03",
-    "name": "Holo",
-    "potentialReturn": "$53,417.94",
-    "potentialReturnPercent": "434.18%"
+    "name": "Holo"
   },
   {
-    "currentPriceUSD": "$8.94",
     "athPriceUSD": "$43.37",
-    "name": "UMA",
-    "potentialReturn": "$48,512.30",
-    "potentialReturnPercent": "385.12%"
+    "name": "UMA"
   },
   {
-    "currentPriceUSD": "$0.00",
     "athPriceUSD": "$0.00",
-    "name": "SHIBA INU",
-    "potentialReturn": "$46,718.84",
-    "potentialReturnPercent": "367.19%"
+    "name": "SHIBA INU"
   },
   {
-    "currentPriceUSD": "$0.06",
     "athPriceUSD": "$0.30",
-    "name": "TRON",
-    "potentialReturn": "$46,711.24",
-    "potentialReturnPercent": "367.11%"
+    "name": "TRON"
   },
   {
-    "currentPriceUSD": "$0.98",
     "athPriceUSD": "$4.38",
-    "name": "Klaytn",
-    "potentialReturn": "$44,803.60",
-    "potentialReturnPercent": "348.04%"
+    "name": "Klaytn"
   },
   {
-    "currentPriceUSD": "$0.22",
     "athPriceUSD": "$0.96",
-    "name": "Fantom",
-    "potentialReturn": "$43,783.17",
-    "potentialReturnPercent": "337.83%"
+    "name": "Fantom"
   },
   {
-    "currentPriceUSD": "$10.30",
     "athPriceUSD": "$44.17",
-    "name": "OKB",
-    "potentialReturn": "$42,883.50",
-    "potentialReturnPercent": "328.83%"
+    "name": "OKB"
   },
   {
-    "currentPriceUSD": "$6.73",
     "athPriceUSD": "$28.77",
-    "name": "Synthetix",
-    "potentialReturn": "$42,748.89",
-    "potentialReturnPercent": "327.49%"
+    "name": "Synthetix"
   },
   {
-    "currentPriceUSD": "$56.53",
     "athPriceUSD": "$237.24",
-    "name": "Filecoin",
-    "potentialReturn": "$41,967.10",
-    "potentialReturnPercent": "319.67%"
+    "name": "Filecoin"
   },
   {
-    "currentPriceUSD": "$0.04",
     "athPriceUSD": "$0.18",
-    "name": "DigiByte",
-    "potentialReturn": "$40,763.90",
-    "potentialReturnPercent": "307.64%"
+    "name": "DigiByte"
   },
   {
-    "currentPriceUSD": "$0.83",
     "athPriceUSD": "$3.28",
-    "name": "Algorand",
-    "potentialReturn": "$39,651.84",
-    "potentialReturnPercent": "296.52%"
+    "name": "Algorand"
   },
   {
-    "currentPriceUSD": "$10.22",
     "athPriceUSD": "$39.81",
-    "name": "Huobi Token",
-    "potentialReturn": "$38,953.03",
-    "potentialReturnPercent": "289.53%"
+    "name": "Huobi Token"
   },
   {
-    "currentPriceUSD": "$5.93",
     "athPriceUSD": "$22.33",
-    "name": "Terra",
-    "potentialReturn": "$37,655.99",
-    "potentialReturnPercent": "276.56%"
+    "name": "Terra"
   },
   {
-    "currentPriceUSD": "$0.24",
     "athPriceUSD": "$0.89",
-    "name": "Chiliz",
-    "potentialReturn": "$37,552.65",
-    "potentialReturnPercent": "275.53%"
+    "name": "Chiliz"
   },
   {
-    "currentPriceUSD": "$0.68",
     "athPriceUSD": "$2.53",
-    "name": "0x",
-    "potentialReturn": "$37,431.57",
-    "potentialReturnPercent": "274.32%"
+    "name": "0x"
   },
   {
-    "currentPriceUSD": "$1.10",
     "athPriceUSD": "$4.00",
-    "name": "Enjin Coin",
-    "potentialReturn": "$36,363.64",
-    "potentialReturnPercent": "263.64%"
+    "name": "Enjin Coin"
   },
   {
-    "currentPriceUSD": "$0.06",
     "athPriceUSD": "$0.22",
-    "name": "Harmony",
-    "potentialReturn": "$35,836.94",
-    "potentialReturnPercent": "258.37%"
+    "name": "Harmony"
   },
   {
-    "currentPriceUSD": "$2.16",
     "athPriceUSD": "$7.57",
-    "name": "NEAR Protocol",
-    "potentialReturn": "$35,046.30",
-    "potentialReturnPercent": "250.46%"
+    "name": "NEAR Protocol"
   },
   {
-    "currentPriceUSD": "$0.27",
     "athPriceUSD": "$0.94",
-    "name": "Stellar",
-    "potentialReturn": "$35,003.73",
-    "potentialReturnPercent": "250.04%"
+    "name": "Stellar"
   },
   {
-    "currentPriceUSD": "$0.81",
     "athPriceUSD": "$2.82",
-    "name": "Stacks",
-    "potentialReturn": "$34,720.51",
-    "potentialReturnPercent": "247.21%"
+    "name": "Stacks"
   },
   {
-    "currentPriceUSD": "$12.77",
     "athPriceUSD": "$44.18",
-    "name": "PancakeSwap",
-    "potentialReturn": "$34,596.71",
-    "potentialReturnPercent": "245.97%"
+    "name": "PancakeSwap"
   },
   {
-    "currentPriceUSD": "$6.17",
     "athPriceUSD": "$21.26",
-    "name": "THORChain",
-    "potentialReturn": "$34,457.05",
-    "potentialReturnPercent": "244.57%"
+    "name": "THORChain"
   },
   {
-    "currentPriceUSD": "$142.80",
     "athPriceUSD": "$491.64",
-    "name": "Bitcoin SV",
-    "potentialReturn": "$34,428.57",
-    "potentialReturnPercent": "244.29%"
+    "name": "Bitcoin SV"
   },
   {
-    "currentPriceUSD": "$52.81",
     "athPriceUSD": "$176.16",
-    "name": "Ethereum Classic",
-    "potentialReturn": "$33,357.32",
-    "potentialReturnPercent": "233.57%"
+    "name": "Ethereum Classic"
   },
   {
-    "currentPriceUSD": "$0.08",
     "athPriceUSD": "$0.28",
-    "name": "VeChain",
-    "potentialReturn": "$33,012.93",
-    "potentialReturnPercent": "230.13%"
+    "name": "VeChain"
   },
   {
-    "currentPriceUSD": "$15.09",
     "athPriceUSD": "$49.69",
-    "name": "Polkadot",
-    "potentialReturn": "$32,929.09",
-    "potentialReturnPercent": "229.29%"
+    "name": "Polkadot"
   },
   {
-    "currentPriceUSD": "$7.28",
     "athPriceUSD": "$23.38",
-    "name": "SushiSwap",
-    "potentialReturn": "$32,115.38",
-    "potentialReturnPercent": "221.15%"
+    "name": "SushiSwap"
   },
   {
-    "currentPriceUSD": "$195.32",
     "athPriceUSD": "$623.75",
-    "name": "Kusama",
-    "potentialReturn": "$31,934.77",
-    "potentialReturnPercent": "219.35%"
+    "name": "Kusama"
   },
   {
-    "currentPriceUSD": "$3.15",
     "athPriceUSD": "$10.00",
-    "name": "Bancor",
-    "potentialReturn": "$31,746.03",
-    "potentialReturnPercent": "217.46%"
+    "name": "Bancor"
   },
   {
-    "currentPriceUSD": "$0.08",
     "athPriceUSD": "$0.26",
-    "name": "Zilliqa",
-    "potentialReturn": "$31,692.84",
-    "potentialReturnPercent": "216.93%"
+    "name": "Zilliqa"
   },
   {
-    "currentPriceUSD": "$79.07",
     "athPriceUSD": "$245.56",
-    "name": "Elrond",
-    "potentialReturn": "$31,056.03",
-    "potentialReturnPercent": "210.56%"
+    "name": "Elrond"
   },
   {
-    "currentPriceUSD": "$135.58",
     "athPriceUSD": "$412.96",
-    "name": "Litecoin",
-    "potentialReturn": "$30,458.77",
-    "potentialReturnPercent": "204.59%"
+    "name": "Litecoin"
   },
   {
-    "currentPriceUSD": "$0.24",
     "athPriceUSD": "$0.74",
-    "name": "Dogecoin",
-    "potentialReturn": "$30,416.49",
-    "potentialReturnPercent": "204.16%"
+    "name": "Dogecoin"
   },
   {
-    "currentPriceUSD": "$0.54",
     "athPriceUSD": "$1.63",
-    "name": "Decentraland",
-    "potentialReturn": "$30,393.44",
-    "potentialReturnPercent": "203.93%"
+    "name": "Decentraland"
   },
   {
-    "currentPriceUSD": "$7.02",
     "athPriceUSD": "$21.14",
-    "name": "KuCoin Token",
-    "potentialReturn": "$30,113.96",
-    "potentialReturnPercent": "201.14%"
+    "name": "KuCoin Token"
   },
   {
-    "currentPriceUSD": "$1.35",
     "athPriceUSD": "$4.05",
-    "name": "Nexo",
-    "potentialReturn": "$30,000.00",
-    "potentialReturnPercent": "200.00%"
+    "name": "Nexo"
   },
   {
-    "currentPriceUSD": "$31,581.78",
     "athPriceUSD": "$93,435.53",
-    "name": "yearn.finance",
-    "potentialReturn": "$29,585.26",
-    "potentialReturnPercent": "195.85%"
+    "name": "yearn.finance"
   },
   {
-    "currentPriceUSD": "$225.86",
     "athPriceUSD": "$666.86",
-    "name": "Aave",
-    "potentialReturn": "$29,525.37",
-    "potentialReturnPercent": "195.25%"
+    "name": "Aave"
   },
   {
-    "currentPriceUSD": "$2.86",
     "athPriceUSD": "$8.40",
-    "name": "Tezos",
-    "potentialReturn": "$29,370.63",
-    "potentialReturnPercent": "193.71%"
+    "name": "Tezos"
   },
   {
-    "currentPriceUSD": "$11.01",
     "athPriceUSD": "$32.14",
-    "name": "Cosmos",
-    "potentialReturn": "$29,191.64",
-    "potentialReturnPercent": "191.92%"
+    "name": "Cosmos"
   },
   {
-    "currentPriceUSD": "$18.14",
     "athPriceUSD": "$52.88",
-    "name": "Chainlink",
-    "potentialReturn": "$29,151.05",
-    "potentialReturnPercent": "191.51%"
+    "name": "Chainlink"
   },
   {
-    "currentPriceUSD": "$0.57",
     "athPriceUSD": "$1.65",
-    "name": "SwissBorg",
-    "potentialReturn": "$28,871.39",
-    "potentialReturnPercent": "188.71%"
+    "name": "SwissBorg"
   },
   {
-    "currentPriceUSD": "$0.57",
     "athPriceUSD": "$1.65",
-    "name": "Basic Attention Token",
-    "potentialReturn": "$28,750.65",
-    "potentialReturnPercent": "187.51%"
+    "name": "Basic Attention Token"
   },
   {
-    "currentPriceUSD": "$328.21",
     "athPriceUSD": "$911.20",
-    "name": "Compound",
-    "potentialReturn": "$27,762.71",
-    "potentialReturnPercent": "177.63%"
+    "name": "Compound"
   },
   {
-    "currentPriceUSD": "$61.28",
     "athPriceUSD": "$168.15",
-    "name": "Horizen",
-    "potentialReturn": "$27,439.62",
-    "potentialReturnPercent": "174.40%"
+    "name": "Horizen"
   },
   {
-    "currentPriceUSD": "$0.02",
     "athPriceUSD": "$0.06",
-    "name": "Telcoin",
-    "potentialReturn": "$26,751.85",
-    "potentialReturnPercent": "167.52%"
+    "name": "Telcoin"
   },
   {
-    "currentPriceUSD": "$15.84",
     "athPriceUSD": "$41.33",
-    "name": "Waves",
-    "potentialReturn": "$26,092.17",
-    "potentialReturnPercent": "160.92%"
+    "name": "Waves"
   },
   {
-    "currentPriceUSD": "$6.19",
     "athPriceUSD": "$15.90",
-    "name": "THETA",
-    "potentialReturn": "$25,686.59",
-    "potentialReturnPercent": "156.87%"
+    "name": "THETA"
   },
   {
-    "currentPriceUSD": "$33,346.16",
     "athPriceUSD": "$85,563.99",
-    "name": "Bitcoin BEP2",
-    "potentialReturn": "$25,659.32",
-    "potentialReturnPercent": "156.59%"
+    "name": "Bitcoin BEP2"
   },
   {
-    "currentPriceUSD": "$17.64",
     "athPriceUSD": "$44.97",
-    "name": "Uniswap",
-    "potentialReturn": "$25,493.20",
-    "potentialReturnPercent": "154.93%"
+    "name": "Uniswap"
   },
   {
-    "currentPriceUSD": "$2,505.07",
     "athPriceUSD": "$6,339.02",
-    "name": "Maker",
-    "potentialReturn": "$25,304.76",
-    "potentialReturnPercent": "153.05%"
+    "name": "Maker"
   },
   {
-    "currentPriceUSD": "$206.76",
     "athPriceUSD": "$517.62",
-    "name": "Monero",
-    "potentialReturn": "$25,034.82",
-    "potentialReturnPercent": "150.35%"
+    "name": "Monero"
   },
   {
-    "currentPriceUSD": "$1.08",
     "athPriceUSD": "$2.68",
-    "name": "Polygon",
-    "potentialReturn": "$24,814.81",
-    "potentialReturnPercent": "148.15%"
+    "name": "Polygon"
   },
   {
-    "currentPriceUSD": "$0.11",
     "athPriceUSD": "$0.27",
-    "name": "Crypto.com Coin",
-    "potentialReturn": "$24,392.44",
-    "potentialReturnPercent": "143.92%"
+    "name": "Crypto.com Coin"
   },
   {
-    "currentPriceUSD": "$25.96",
     "athPriceUSD": "$63.08",
-    "name": "FTX Token",
-    "potentialReturn": "$24,298.92",
-    "potentialReturnPercent": "142.99%"
+    "name": "FTX Token"
   },
   {
-    "currentPriceUSD": "$284.54",
     "athPriceUSD": "$690.93",
-    "name": "Binance Coin",
-    "potentialReturn": "$24,282.35",
-    "potentialReturnPercent": "142.82%"
+    "name": "Binance Coin"
   },
   {
-    "currentPriceUSD": "$3.21",
     "athPriceUSD": "$7.24",
-    "name": "Celo",
-    "potentialReturn": "$22,554.52",
-    "potentialReturnPercent": "125.55%"
+    "name": "Celo"
   },
   {
-    "currentPriceUSD": "$0.20",
     "athPriceUSD": "$0.45",
-    "name": "Hedera Hashgraph",
-    "potentialReturn": "$22,385.46",
-    "potentialReturnPercent": "123.85%"
+    "name": "Hedera Hashgraph"
   },
   {
-    "currentPriceUSD": "$0.06",
     "athPriceUSD": "$0.12",
-    "name": "Amp",
-    "potentialReturn": "$21,563.39",
-    "potentialReturnPercent": "115.63%"
+    "name": "Amp"
   },
   {
-    "currentPriceUSD": "$2,091.64",
     "athPriceUSD": "$4,362.35",
-    "name": "Ethereum",
-    "potentialReturn": "$20,856.12",
-    "potentialReturnPercent": "108.56%"
+    "name": "Ethereum"
   },
   {
-    "currentPriceUSD": "$33,256.66",
     "athPriceUSD": "$64,863.10",
-    "name": "Bitcoin",
-    "potentialReturn": "$19,503.79",
-    "potentialReturnPercent": "95.04%"
+    "name": "Bitcoin"
   },
   {
-    "currentPriceUSD": "$33,257.95",
     "athPriceUSD": "$64,796.44",
-    "name": "Wrapped Bitcoin",
-    "potentialReturn": "$19,482.99",
-    "potentialReturnPercent": "94.83%"
+    "name": "Wrapped Bitcoin"
   },
   {
-    "currentPriceUSD": "$0.36",
     "athPriceUSD": "$0.68",
-    "name": "Theta Fuel",
-    "potentialReturn": "$18,913.59",
-    "potentialReturnPercent": "89.14%"
+    "name": "Theta Fuel"
   },
   {
-    "currentPriceUSD": "$133.17",
     "athPriceUSD": "$250.02",
-    "name": "Decred",
-    "potentialReturn": "$18,774.50",
-    "potentialReturnPercent": "87.74%"
+    "name": "Decred"
   },
   {
-    "currentPriceUSD": "$1.32",
     "athPriceUSD": "$2.46",
-    "name": "Cardano",
-    "potentialReturn": "$18,636.36",
-    "potentialReturnPercent": "86.36%"
+    "name": "Cardano"
   },
   {
-    "currentPriceUSD": "$12.56",
     "athPriceUSD": "$23.01",
-    "name": "Helium",
-    "potentialReturn": "$18,320.06",
-    "potentialReturnPercent": "83.20%"
+    "name": "Helium"
   },
   {
-    "currentPriceUSD": "$32.99",
     "athPriceUSD": "$58.30",
-    "name": "Solana",
-    "potentialReturn": "$17,672.02",
-    "potentialReturnPercent": "76.72%"
+    "name": "Solana"
   },
   {
-    "currentPriceUSD": "$0.09",
     "athPriceUSD": "$0.14",
-    "name": "XinFin Network",
-    "potentialReturn": "$16,297.13",
-    "potentialReturnPercent": "62.97%"
+    "name": "XinFin Network"
   },
   {
-    "currentPriceUSD": "$2.41",
     "athPriceUSD": "$3.92",
-    "name": "UNUS SED LEO",
-    "potentialReturn": "$16,265.56",
-    "potentialReturnPercent": "62.66%"
+    "name": "UNUS SED LEO"
   },
   {
-    "currentPriceUSD": "$67.25",
     "athPriceUSD": "$104.41",
-    "name": "Quant",
-    "potentialReturn": "$15,525.65",
-    "potentialReturnPercent": "55.26%"
+    "name": "Quant"
   },
   {
-    "currentPriceUSD": "$1.00",
     "athPriceUSD": "$1.36",
-    "name": "TrueUSD",
-    "potentialReturn": "$13,600.00",
-    "potentialReturnPercent": "36.00%"
+    "name": "TrueUSD"
   },
   {
-    "currentPriceUSD": "$5.94",
     "athPriceUSD": "$8.02",
-    "name": "Celsius",
-    "potentialReturn": "$13,501.68",
-    "potentialReturnPercent": "35.02%"
+    "name": "Celsius"
   },
   {
-    "currentPriceUSD": "$1.00",
     "athPriceUSD": "$1.21",
-    "name": "Tether",
-    "potentialReturn": "$12,100.00",
-    "potentialReturnPercent": "21.00%"
+    "name": "Tether"
   },
   {
-    "currentPriceUSD": "$1.00",
     "athPriceUSD": "$1.14",
-    "name": "Dai",
-    "potentialReturn": "$11,400.00",
-    "potentialReturnPercent": "14.00%"
+    "name": "Dai"
   },
   {
-    "currentPriceUSD": "$1.00",
     "athPriceUSD": "$1.11",
-    "name": "USD Coin",
-    "potentialReturn": "$11,100.00",
-    "potentialReturnPercent": "11.00%"
+    "name": "USD Coin"
   },
   {
-    "currentPriceUSD": "$1.00",
     "athPriceUSD": "$1.10",
-    "name": "Paxos Standard",
-    "potentialReturn": "$11,000.00",
-    "potentialReturnPercent": "10.00%"
+    "name": "Paxos Standard"
   },
   {
-    "currentPriceUSD": "$1.00",
     "athPriceUSD": "$1.09",
-    "name": "HUSD",
-    "potentialReturn": "$10,900.00",
-    "potentialReturnPercent": "9.00%"
+    "name": "HUSD"
   },
   {
-    "currentPriceUSD": "$1.00",
     "athPriceUSD": "$1.05",
-    "name": "TerraUSD",
-    "potentialReturn": "$10,500.00",
-    "potentialReturnPercent": "5.00%"
+    "name": "TerraUSD"
   }
 ]
