@@ -4,6 +4,7 @@ const app = require("express")();
 const axios = require("axios");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const { isEmpty } = require("lodash");
 // Relative imports.
 const CoinMarketCapAPI = require("./services/coinMarketCapAPI");
 
@@ -27,17 +28,54 @@ app.get("/api", (req, res) => {
 app.get("/api/cryptos", async (req, res) => {
   // Derive query params.
   const queryParams = {
-    listing_status: req.query.listing_status,
-    start: req.query.start,
     limit: req.query.limit,
-    sort: req.query.sort,
+    start: req.query.start,
     symbol: req.query.symbol,
-    aux: req.query.aux,
   };
 
+  let cryptocurrencyMapResponse = undefined;
+  let cryptocurrencyInfoResponse = undefined;
+  let pricePerformanceStatsResponse = undefined;
+  let cryptos = [];
+
   // Make the request to CoinMarketCap to get top cryptocurrencies.
-  const response = await coinMarketCapAPI.getCryptocurrencyMap(queryParams);
-  const cryptos = response?.data;
+  try {
+    cryptocurrencyMapResponse = await coinMarketCapAPI.getCryptocurrencyMap(
+      queryParams
+    );
+    cryptos = [...cryptocurrencyMapResponse?.data];
+
+    // Escape early if there are no cryptos.
+    if (isEmpty(cryptos)) {
+      return res.status(200).send([]);
+    }
+
+    // Derive a list of the crypto symbols.
+    const symbols = cryptos.map((crypto) => crypto.symbol);
+
+    // Make the request to CoinMarketCap to get the crypto info for each symbol.
+    cryptocurrencyInfoResponse = await coinMarketCapAPI.getCryptocurrencyInfo({
+      symbol: symbols,
+    });
+    cryptos = cryptos?.map((crypto) => {
+      const cryptoInfo = cryptocurrencyInfoResponse?.data?.find(
+        (info) => info.symbol === crypto.symbol
+      );
+      return Object.assign(crypto, cryptoInfo);
+    });
+
+    // Make the request to CoinMarketCap to get the crypto price performance stats for each symbol.
+    pricePerformanceStatsResponse =
+      await coinMarketCapAPI.getPricePerformanceStats({ symbol: symbols });
+    cryptos = cryptos?.map((crypto) => {
+      const pricePerformanceStats = pricePerformanceStatsResponse?.data?.find(
+        (stats) => stats.symbol === crypto.symbol
+      );
+      return Object.assign(crypto, pricePerformanceStats);
+    });
+  } catch (error) {
+    return res.status(500).send(error);
+  }
 
   console.log("cryptos", cryptos);
   res.send(cryptos);
