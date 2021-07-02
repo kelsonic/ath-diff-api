@@ -37,6 +37,7 @@ app.get("/api", (req, res) => {
 });
 
 app.get("/api/cryptos", async (req, res) => {
+  console.log("request to /api/cryptos");
   // Derive symbols.
   const symbols = athPrices?.map(({ symbol }) => symbol);
 
