@@ -4,21 +4,20 @@ const app = require("express")();
 const axios = require("axios");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const { isEmpty } = require("lodash");
+const { CronJob } = require("cron");
 // Relative imports.
-const athPrices = require("./raw-data/athPrices.json");
+const { cryptosController } = require("./controllers/cryptos");
 const {
-  logErrors,
   clientErrorHandler,
   errorHandler,
+  logErrors,
 } = require("./utils/errorHandlers");
-const CoinMarketCapAPI = require("./services/coinMarketCapAPI");
+const { getCryptos, notifySlack } = require("./utils/helpers");
 
-// Create a new instance of the CoinMarketCapAPI class.
-const coinMarketCapAPI = new CoinMarketCapAPI(
-  process.env.COIN_MARKET_CAP_API_KEY
-);
+// Derive the config.
+// ================
 const PORT = process.env.PORT || 3001;
+// ================
 
 // Set up the CORS middleware.
 app.use(cors());
@@ -32,75 +31,79 @@ app.use(clientErrorHandler);
 app.use(errorHandler);
 
 // Create endpoints.
-app.get("/api", (req, res) => {
-  res.send("Welcome to ATH Diff's API!");
-});
+app.get("/api/cryptos", cryptosController);
 
-app.get("/api/cryptos", async (req, res) => {
-  console.log("request to /api/cryptos");
-  // Derive symbols.
-  const symbols = athPrices?.map(({ symbol }) => symbol);
+// Cron job helpers:
+// ==============
+const onExit = async (error) => {
+  console.error(error);
+  notifySlack("Exiting. Stopped cron job for ATH Diff.");
+};
 
-  let cryptocurrencyMapResponse = undefined;
-  let cryptocurrencyInfoResponse = undefined;
-  let getQuotesLatestResponse = undefined;
-  let cryptos = athPrices;
-
-  // Make the request to CoinMarketCap to get top cryptocurrencies.
-  try {
-    cryptocurrencyMapResponse = await coinMarketCapAPI.getCryptocurrencyMap({
-      symbol: symbols,
-    });
-    cryptos = cryptos?.map((crypto) => {
-      const cryptoInfo = cryptocurrencyMapResponse?.data?.find(
-        (info) => info.symbol === crypto.symbol
-      );
-      return Object.assign(crypto, cryptoInfo);
-    });
-
-    // Escape early if there are no cryptos.
-    if (isEmpty(cryptos)) {
-      return res.status(200).send([]);
-    }
-  } catch (error) {
-    console.log("Error in request to getCryptocurrencyMap");
-    throw new Error(error);
-    return res.status(500).send(error);
-  }
+const onTick = async () => {
+  const now = new Date();
+  console.log("Fetching cryptos:", now);
 
   try {
-    // Make the request to CoinMarketCap to get the crypto price performance stats for each symbol.
-    getQuotesLatestResponse =
-      await coinMarketCapAPI.getCryptocurrencyQuotesLatest({ symbol: symbols });
-    cryptos = cryptos?.map((crypto) => {
-      const getQuotesLatest = getQuotesLatestResponse?.data?.[crypto.symbol];
-      return Object.assign(crypto, getQuotesLatest);
-    });
+    const cryptos = await getCryptos();
+    const message = `*Daily Digest: ATH vs Current Price USD*\n\n${cryptos?.map(
+      (crypto) =>
+        `*${crypto?.name}* (${
+          crypto?.symbol
+        }):\nCurrent Price: ${crypto?.quote?.USD?.price?.toLocaleString(
+          "en-US",
+          {
+            style: "currency",
+            currency: "USD",
+          }
+        )}\nAll Time High: ${crypto?.athPriceUSD?.toLocaleString("en-US", {
+          style: "currency",
+          currency: "USD",
+        })}\nDifference: ${crypto?.athPriceDiffUSD?.toLocaleString("en-US", {
+          style: "currency",
+          currency: "USD",
+        })}\nDifference Percentage: *${crypto?.athPriceDiffPercent?.toFixed(
+          2
+        )}%*\n\n`
+    )}`;
   } catch (error) {
-    console.log("Error in request to getCryptocurrencyQuotesLatest");
-    throw new Error(error);
-    return res.status(500).send(error);
+    console.error("Failed to get cryptos:", error);
+    notifySlack(`Failed to get cryptos: ${error.message}`);
   }
+};
 
-  // Format each crypto to include the ath price diff + % diff.
-  const formattedCryptos = cryptos?.map((crypto) => {
-    const athPriceDiffUSD = crypto?.athPriceUSD - crypto?.quote?.USD?.price;
-    const athPriceDiffPercent =
-      (crypto?.athPriceUSD / crypto?.quote?.USD?.price) * 100;
-
-    const formattedCrypto = {
-      ...crypto,
-      athPriceDiffUSD,
-      athPriceDiffPercent,
-    };
-
-    return formattedCrypto;
-  });
-
-  res.send(formattedCryptos);
-});
+const onComplete = async () => {
+  const now = new Date();
+  console.log("Completed cron job:", now);
+  notifySlack("Completed cron job for ATH Diff.");
+};
+// ==============
+// Cron job helpers END
 
 // Start the server.
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
   console.log(`Server listening on port ${PORT}`);
+
+  // Start the cron job.
+  new CronJob(
+    // cronTime
+    `0 */${RETRY_MINUTE_INTERVAL} * * * *`,
+    // onTick
+    onTick,
+    // onComplete
+    onComplete,
+    // start
+    true,
+    // timezone
+    "America/Denver",
+    // context
+    null,
+    // runOnInit
+    null
+  );
+
+  // Notify slack.
+  notifySlack(
+    `Starting cron job for crypto all-time-high vs. market price diffs...`
+  );
 });
