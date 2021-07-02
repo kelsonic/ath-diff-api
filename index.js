@@ -6,6 +6,11 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const { isEmpty } = require("lodash");
 // Relative imports.
+const {
+  logErrors,
+  clientErrorHandler,
+  errorHandler,
+} = require("./utils/errorHandlers");
 const CoinMarketCapAPI = require("./services/coinMarketCapAPI");
 
 // Create a new instance of the CoinMarketCapAPI class.
@@ -19,6 +24,11 @@ app.use(cors());
 
 // Set up the body parser middleware.
 app.use(bodyParser.json());
+
+// Define error handlers.
+app.use(logErrors);
+app.use(clientErrorHandler);
+app.use(errorHandler);
 
 // Create endpoints.
 app.get("/api", (req, res) => {
@@ -49,10 +59,16 @@ app.get("/api/cryptos", async (req, res) => {
     if (isEmpty(cryptos)) {
       return res.status(200).send([]);
     }
+  } catch (error) {
+    console.log("Error in request to getCryptocurrencyMap");
+    throw new Error(error);
+    return res.status(500).send(error);
+  }
 
-    // Derive a list of the crypto symbols.
-    const symbols = cryptos.map((crypto) => crypto.symbol);
+  // Derive a list of the crypto symbols.
+  const symbols = cryptos.map((crypto) => crypto.symbol);
 
+  try {
     // Make the request to CoinMarketCap to get the crypto info for each symbol.
     cryptocurrencyInfoResponse = await coinMarketCapAPI.getCryptocurrencyInfo({
       symbol: symbols,
@@ -63,7 +79,13 @@ app.get("/api/cryptos", async (req, res) => {
       );
       return Object.assign(crypto, cryptoInfo);
     });
+  } catch (error) {
+    console.log("Error in request to getCryptocurrencyInfo");
+    throw new Error(error);
+    return res.status(500).send(error);
+  }
 
+  try {
     // Make the request to CoinMarketCap to get the crypto price performance stats for each symbol.
     pricePerformanceStatsResponse =
       await coinMarketCapAPI.getPricePerformanceStats({ symbol: symbols });
@@ -74,6 +96,8 @@ app.get("/api/cryptos", async (req, res) => {
       return Object.assign(crypto, pricePerformanceStats);
     });
   } catch (error) {
+    console.log("Error in request to getPricePerformanceStats");
+    throw new Error(error);
     return res.status(500).send(error);
   }
 

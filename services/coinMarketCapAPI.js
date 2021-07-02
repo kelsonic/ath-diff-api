@@ -20,6 +20,26 @@ class CoinMarketCapAPI {
     };
   }
 
+  handleRequestError(error) {
+    if (error.response) {
+      // The request was made and the server responded with a status code
+      // that falls out of the range of 2xx
+      console.log(error.response.data);
+      console.log(error.response.status);
+      console.log(error.response.headers);
+    } else if (error.request) {
+      // The request was made but no response was received
+      // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+      // http.ClientRequest in node.js
+      console.log(error.request);
+    } else {
+      // Something happened in setting up the request that triggered an Error
+      console.log("Error", error.message);
+    }
+
+    console.log(error.config);
+  }
+
   // Get all the currencies metainfo.
   // https://coinmarketcap.com/api/documentation/v1/#operation/getV1CryptocurrencyInfo
   // @param {Object} options
@@ -28,15 +48,21 @@ class CoinMarketCapAPI {
   // @param {Array}[String] options.symbol
   // @param {Array}[String] options.aux
   getCryptocurrencyInfo = async (options = {}) => {
-    const response = await axios.get(`${this.baseURL}/cryptocurrency/info`, {
-      headers: this.deriveDefaultHeaders(),
-      params: {
-        id: options?.id,
-        slug: options?.slug,
-        symbol: options?.symbol?.join(","),
-        aux: options?.aux?.join(","),
-      },
-    });
+    let response;
+
+    try {
+      const response = await axios.get(`${this.baseURL}/cryptocurrency/info`, {
+        headers: this.deriveDefaultHeaders(),
+        params: {
+          id: options?.id,
+          slug: options?.slug,
+          symbol: options?.symbol?.join(","),
+          aux: options?.aux?.join(","),
+        },
+      });
+    } catch (error) {
+      this.handleRequestError(error);
+    }
 
     return response?.data;
   };
@@ -51,17 +77,23 @@ class CoinMarketCapAPI {
   // @param {Array}[String] options.symbol
   // @param {Array}[String] options.aux
   getCryptocurrencyMap = async (options = {}) => {
-    const response = await axios.get(`${this.baseURL}/cryptocurrency/map`, {
-      headers: this.deriveDefaultHeaders(),
-      params: {
-        listing_status: options?.listingStatus,
-        start: options?.start,
-        limit: options?.limit,
-        sort: options?.sort,
-        symbol: options?.symbol?.join(","),
-        aux: options?.aux?.join(","),
-      },
-    });
+    let response;
+
+    try {
+      response = await axios.get(`${this.baseURL}/cryptocurrency/map`, {
+        headers: this.deriveDefaultHeaders(),
+        params: {
+          listing_status: options?.listingStatus,
+          start: options?.start,
+          limit: options?.limit,
+          sort: options?.sort,
+          symbol: options?.symbol?.join(","),
+          aux: options?.aux?.join(","),
+        },
+      });
+    } catch (error) {
+      this.handleRequestError(error);
+    }
 
     return response?.data;
   };
@@ -77,21 +109,27 @@ class CoinMarketCapAPI {
   // @param {String} options.convertID
   // @param {Boolean} options.skipInvalid
   getPricePerformanceStats = async (options = {}) => {
-    const response = await axios.get(
-      `${this.baseURL}/cryptocurrency/price-performance-stats/latest`,
-      {
-        headers: this.deriveDefaultHeaders(),
-        params: {
-          id: options?.id,
-          slug: options?.slug,
-          symbol: options?.symbol?.join(","),
-          time_period: options?.timePeriod,
-          convert: options?.convert,
-          convert_id: options?.convertID,
-          skip_invalid: options?.skipInvalid,
-        },
-      }
-    );
+    let response;
+
+    try {
+      response = await axios.get(
+        `${this.baseURL}/cryptocurrency/price-performance-stats/latest`,
+        {
+          headers: this.deriveDefaultHeaders(),
+          params: {
+            id: options?.id,
+            slug: options?.slug,
+            symbol: options?.symbol?.join(","),
+            time_period: options?.timePeriod,
+            convert: options?.convert,
+            convert_id: options?.convertID,
+            skip_invalid: options?.skipInvalid,
+          },
+        }
+      );
+    } catch (error) {
+      this.handleRequestError(error);
+    }
 
     return response?.data;
   };
