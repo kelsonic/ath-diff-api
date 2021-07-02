@@ -6,6 +6,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const { isEmpty } = require("lodash");
 // Relative imports.
+const athPrices = require("./raw-data/athPrices.json");
 const {
   logErrors,
   clientErrorHandler,
@@ -36,24 +37,25 @@ app.get("/api", (req, res) => {
 });
 
 app.get("/api/cryptos", async (req, res) => {
-  // Derive query params.
-  const queryParams = {
-    limit: req.query.limit,
-    start: req.query.start,
-    symbol: req.query.symbol,
-  };
+  // Derive symbols.
+  const symbols = athPrices?.map(({ symbol }) => symbol);
 
   let cryptocurrencyMapResponse = undefined;
   let cryptocurrencyInfoResponse = undefined;
-  let pricePerformanceStatsResponse = undefined;
-  let cryptos = [];
+  let getQuotesLatestResponse = undefined;
+  let cryptos = athPrices;
 
   // Make the request to CoinMarketCap to get top cryptocurrencies.
   try {
-    cryptocurrencyMapResponse = await coinMarketCapAPI.getCryptocurrencyMap(
-      queryParams
-    );
-    cryptos = [...cryptocurrencyMapResponse?.data];
+    cryptocurrencyMapResponse = await coinMarketCapAPI.getCryptocurrencyMap({
+      symbol: symbols,
+    });
+    cryptos = cryptos?.map((crypto) => {
+      const cryptoInfo = cryptocurrencyMapResponse?.data?.find(
+        (info) => info.symbol === crypto.symbol
+      );
+      return Object.assign(crypto, cryptoInfo);
+    });
 
     // Escape early if there are no cryptos.
     if (isEmpty(cryptos)) {
@@ -65,43 +67,20 @@ app.get("/api/cryptos", async (req, res) => {
     return res.status(500).send(error);
   }
 
-  // Derive a list of the crypto symbols.
-  const symbols = cryptos.map((crypto) => crypto.symbol);
-
-  try {
-    // Make the request to CoinMarketCap to get the crypto info for each symbol.
-    cryptocurrencyInfoResponse = await coinMarketCapAPI.getCryptocurrencyInfo({
-      symbol: symbols,
-    });
-    cryptos = cryptos?.map((crypto) => {
-      const cryptoInfo = cryptocurrencyInfoResponse?.data?.find(
-        (info) => info.symbol === crypto.symbol
-      );
-      return Object.assign(crypto, cryptoInfo);
-    });
-  } catch (error) {
-    console.log("Error in request to getCryptocurrencyInfo");
-    throw new Error(error);
-    return res.status(500).send(error);
-  }
-
   try {
     // Make the request to CoinMarketCap to get the crypto price performance stats for each symbol.
-    pricePerformanceStatsResponse =
-      await coinMarketCapAPI.getPricePerformanceStats({ symbol: symbols });
+    getQuotesLatestResponse =
+      await coinMarketCapAPI.getCryptocurrencyQuotesLatest({ symbol: symbols });
     cryptos = cryptos?.map((crypto) => {
-      const pricePerformanceStats = pricePerformanceStatsResponse?.data?.find(
-        (stats) => stats.symbol === crypto.symbol
-      );
-      return Object.assign(crypto, pricePerformanceStats);
+      const getQuotesLatest = getQuotesLatestResponse?.data?.[crypto.symbol];
+      return Object.assign(crypto, getQuotesLatest);
     });
   } catch (error) {
-    console.log("Error in request to getPricePerformanceStats");
+    console.log("Error in request to getCryptocurrencyQuotesLatest");
     throw new Error(error);
     return res.status(500).send(error);
   }
 
-  console.log("cryptos", cryptos);
   res.send(cryptos);
 });
 

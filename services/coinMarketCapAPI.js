@@ -98,6 +98,32 @@ class CoinMarketCapAPI {
     return response?.data;
   };
 
+  // Get a list of all the cryptocurrencies' latest quotes.
+  // https://coinmarketcap.com/api/documentation/v1/#operation/getV1CryptocurrencyQuotesLatest
+  // @param {Object} options
+  // @param {Array}[String] options.symbol
+  // @param {Array}[String] options.aux
+  getCryptocurrencyQuotesLatest = async (options = {}) => {
+    let response;
+
+    try {
+      response = await axios.get(
+        `${this.baseURL}/cryptocurrency/quotes/latest`,
+        {
+          headers: this.deriveDefaultHeaders(),
+          params: {
+            symbol: options?.symbol?.join(","),
+            aux: options?.aux?.join(","),
+          },
+        }
+      );
+    } catch (error) {
+      this.handleRequestError(error);
+    }
+
+    return response?.data;
+  };
+
   // Get a list of price performance stats for a list of cryptocurrencies.
   // https://coinmarketcap.com/api/documentation/v1/#operation/getV1CryptocurrencyPriceperformancestatsLatest
   // @param {Object} options
