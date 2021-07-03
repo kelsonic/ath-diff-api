@@ -1,6 +1,6 @@
 // Node modules.
 const axios = require("axios");
-const { isEmpty, take } = require("lodash");
+const { orderBy, isEmpty, take, shuffle } = require("lodash");
 // Relative imports.
 const athPrices = require("../raw-data/athPrices.json");
 const CoinMarketCapAPI = require("../services/coinMarketCapAPI");
@@ -10,8 +10,8 @@ const coinMarketCapAPI = new CoinMarketCapAPI(
 );
 
 const deriveDigestMessage = (cryptos, MAX_CRYPTOS_TO_NOTIFY, BASE_URL) => {
-  return `*Daily Digest: ATH vs Current Price USD*\n\n${take(
-    cryptos,
+  return `*Daily Crypto Digest: ATH vs Current Price* (${new Date().toLocaleDateString()})\n\n${take(
+    orderBy(shuffle(cryptos), "athPriceDiffPercent", "desc"),
     MAX_CRYPTOS_TO_NOTIFY
   )
     ?.map(
