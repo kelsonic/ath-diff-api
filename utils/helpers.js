@@ -1,12 +1,54 @@
 // Node modules.
 const axios = require("axios");
-const { isEmpty } = require("lodash");
+const { isEmpty, take } = require("lodash");
 // Relative imports.
 const athPrices = require("../raw-data/athPrices.json");
 const CoinMarketCapAPI = require("../services/coinMarketCapAPI");
 
-const notifySlack = (message) => {
+const coinMarketCapAPI = new CoinMarketCapAPI(
+  process.env.COIN_MARKET_CAP_API_KEY
+);
+
+const deriveDigestMessage = (cryptos, MAX_CRYPTOS_TO_NOTIFY, BASE_URL) => {
+  return `*Daily Digest: ATH vs Current Price USD*\n\n${take(
+    cryptos,
+    MAX_CRYPTOS_TO_NOTIFY
+  )
+    ?.map(
+      (crypto) =>
+        `*${crypto?.name}* (${
+          crypto?.symbol
+        }):\nCurrent Price: ${crypto?.quote?.USD?.price?.toLocaleString(
+          "en-US",
+          {
+            style: "currency",
+            currency: "USD",
+          }
+        )}\nAll Time High: ${crypto?.athPriceUSD?.toLocaleString("en-US", {
+          style: "currency",
+          currency: "USD",
+        })}\nDifference: ${crypto?.athPriceDiffUSD?.toLocaleString("en-US", {
+          style: "currency",
+          currency: "USD",
+        })}\nDifference Percentage: *${crypto?.athPriceDiffPercent
+          ?.toFixed(2)
+          ?.toLocaleString("en-US")}%*`
+    )
+    ?.join(
+      "\n\n"
+    )}\n\n\nWant to see more than ${MAX_CRYPTOS_TO_NOTIFY}? <${BASE_URL}/api/cryptos|View the full list of cryptos and their diffs here! 🚀💸🚀>`;
+};
+
+const notifySlack = async (message) => {
+  // Log the message.
   console.log(message);
+
+  // Escape early if we shouldn't explicitly notify slack or there is no slack webhook.
+  if (process.env.NOTIFY_SLACK !== "true" || !process.env.SLACK_HOOK_URL) {
+    return;
+  }
+
+  // Notify slack.
   await axios.post(process.env.SLACK_HOOK_URL, {
     text: message,
   });
@@ -75,4 +117,4 @@ const getCryptos = async (res) => {
   return formattedCryptos;
 };
 
-module.exports = { getCryptos, notifySlack };
+module.exports = { deriveDigestMessage, getCryptos, notifySlack };

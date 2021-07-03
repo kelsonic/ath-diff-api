@@ -12,10 +12,16 @@ const {
   errorHandler,
   logErrors,
 } = require("./utils/errorHandlers");
-const { getCryptos, notifySlack } = require("./utils/helpers");
+const {
+  deriveDigestMessage,
+  getCryptos,
+  notifySlack,
+} = require("./utils/helpers");
 
 // Derive the config.
 // ================
+const BASE_URL = process.env.BASE_URL || "http://localhost:3001";
+const MAX_CRYPTOS_TO_NOTIFY = process.env.MAX_CRYPTOS_TO_NOTIFY || 10;
 const PORT = process.env.PORT || 3001;
 // ================
 
@@ -46,26 +52,12 @@ const onTick = async () => {
 
   try {
     const cryptos = await getCryptos();
-    const message = `*Daily Digest: ATH vs Current Price USD*\n\n${cryptos?.map(
-      (crypto) =>
-        `*${crypto?.name}* (${
-          crypto?.symbol
-        }):\nCurrent Price: ${crypto?.quote?.USD?.price?.toLocaleString(
-          "en-US",
-          {
-            style: "currency",
-            currency: "USD",
-          }
-        )}\nAll Time High: ${crypto?.athPriceUSD?.toLocaleString("en-US", {
-          style: "currency",
-          currency: "USD",
-        })}\nDifference: ${crypto?.athPriceDiffUSD?.toLocaleString("en-US", {
-          style: "currency",
-          currency: "USD",
-        })}\nDifference Percentage: *${crypto?.athPriceDiffPercent?.toFixed(
-          2
-        )}%*\n\n`
-    )}`;
+    const message = deriveDigestMessage(
+      cryptos,
+      MAX_CRYPTOS_TO_NOTIFY,
+      BASE_URL
+    );
+    notifySlack(message);
   } catch (error) {
     console.error("Failed to get cryptos:", error);
     notifySlack(`Failed to get cryptos: ${error.message}`);
@@ -84,10 +76,13 @@ const onComplete = async () => {
 app.listen(PORT, async () => {
   console.log(`Server listening on port ${PORT}`);
 
+  const EVERY_DAY_AT_9_AM = "0 9 * * *";
+  const EVERY_2ND_MINUTE = "*/2 * * * *";
+
   // Start the cron job.
   new CronJob(
     // cronTime
-    `0 */${RETRY_MINUTE_INTERVAL} * * * *`,
+    EVERY_2ND_MINUTE,
     // onTick
     onTick,
     // onComplete
@@ -104,6 +99,6 @@ app.listen(PORT, async () => {
 
   // Notify slack.
   notifySlack(
-    `Starting cron job for crypto all-time-high vs. market price diffs...`
+    `Starting cron job for crypto all-time-high vs. market price diffs! ⚙️\n\nThis will post a daily digest in this channel at 9am MST.`
   );
 });
